@@ -1,40 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>karoce eduka ats cia</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <meta name="theme-color" content="#272130" />
-        <link href="./index.css" rel="stylesheet">
+        <meta name="theme-color" content="#272130">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/index.css" rel="stylesheet">
     </head>
-    
     <body>
-        <div id="wrapper">
-            <div class="wrappers">
-                <p><span class="bigger-text">1</span></p>
-                <p>PS galimai veikia tik ant kompu, kai kurie telefai neleidzia nukopint daug teksto :( <br><br>Įkopijuok testo linką ir spausk <span class="highlight">ATIDARYTI</span></p>
-                <div id="url-button-container">
-                    <input id="url-input" placeholder="https://klase.eduka.lt/student/lesson-material/show/......../......./.">
-                    <button id="open-url-btn">atidaryti</button>
-                </div>
-            </div>
-            <div class="wrappers">
-                <p><span class="bigger-text">2</span></p>
-                <p>Iš atidaryto lango nukopijuok <span class="highlight">visą tekstą</span> (<b>CTRL + A; CTRL + C</b>) ir įkopijuok į šalia esantį langą ir spausk <span class="highlight">gauti ats.</span></p>
-                <textarea id="testo-xml" placeholder="tekstas..."></textarea>
-                <button id="process-xml-btn">gauti ats.</button>
-            </div>
-            <div class="wrappers">
-                <p><span class="bigger-text">3</span></p>
-                <p><span class="highlight">Atsakymai:</span></p>
-                <p id="output"></p>
-            </div>
+        <button id="start">start</button>
+
+        <div id="win">
+            <img id="img" src="ck.jpeg">
+            <div id="device-time"></div>
+            <div id="timer"></div>
+            <div id="pasiemimo-data"></div>
+            <div id="pasiemimo-laikas"></div>
         </div>
-        
-        
-    
-        <script src="index.js"></script>
     </body>
+    <script src="index.js"></script>
 </html>
