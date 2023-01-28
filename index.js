@@ -1,48 +1,74 @@
-const urlInput = document.querySelector("#url-input");
-const urlButton = document.querySelector("#open-url-btn");
-urlButton.onclick = () => {
-    let url = urlInput.value;
-    url = url.slice(-18, -10);
-    let newUrl = "https://klase.eduka.lt/api/student/quiz-templates/result-xml/" + url + "/sprendimas";
-    window.open(newUrl);
-} 
-
-const xmlTextBox = document.querySelector("#testo-xml");
-const processXMLbtn = document.querySelector("#process-xml-btn");
-
-processXMLbtn.onclick = () => processXML(xmlTextBox.value);
-
-function processXML(val) {
-    let xml = val.slice(113);
-    let parser = new DOMParser();
-    let XMLdoc = parser.parseFromString(xml, "text/xml");
+class CircleK {
+    constructor() {
+        
+    }
+    init() {
+        document.querySelector("#win").style.transform = "translateY(0)";
+        this.deviceTime();
+        document.querySelector("#timer").style.left = screen.width / 2 - 50 + "px";
+        this.countdown(5);
+        this.showTimeAndDate();
+        
+    }
+    checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+          }
+          return i;
+    }
+    deviceTime() {
+        var self = this;
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        m = this.checkTime(m);
+        document.getElementById('device-time').innerHTML = h + ":" + m;
+        var t = setTimeout(function() {
+            self.deviceTime();
+        }, 500);
+    }
     
-    let questions = XMLdoc.querySelectorAll("text[draggable],[math],[isActivity]");
-    let data = [];
-    let j = 0;
-    for(let i = 0; i < questions.length; i++) {
-        let q = questions[i].textContent;
-        if(!q.includes("Užduoties lygis") && !q.includes("Rodyti atsakymus") && q !== "") {
-            data[j] = {
-                question: j+1
+    countdown(minutes) {
+        var self = this;
+        var seconds = 60;
+        var mins = minutes
+        function tick() { 
+            var counter = document.getElementById("timer");
+            var current_minutes = mins-1
+            seconds--;
+            counter.innerHTML = "0" + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+            if( seconds > 0 ) {
+                setTimeout(tick, 1000);
+            } else {
+                if(mins > 1){
+                    self.countdown(mins-1);           
+                }
             }
-            j++;
         }
+        tick();
     }
-
-    let answers = XMLdoc.querySelectorAll("option");
-    let b = 0;
-    for(let k = 0; k < answers.length; k++) {
-        if(answers[k].getAttribute("value") == 1) {
-            data[b].answer = answers[k].children[0].textContent; 
-            b++;
-        }
-    }
-
-    const outputParagraph = document.querySelector("#output");
-    outputParagraph.innerHTML = "";
-    for(let l = 0; l < data.length; l++) {
-        outputParagraph.innerHTML += `<br>` + data[l].question + ". " + data[l].answer;
+    showTimeAndDate() {
+        var date = new Date();
+        var data = document.querySelector("#pasiemimo-data");
+        var laikas = document.querySelector("#pasiemimo-laikas");
+        laikas.innerHTML = date.getHours() + ":" + date.getMinutes();
+        data.innerHTML = `${date.getDate()}-0${date.getMonth() + 1}-${date.getFullYear()}`;
     }
 }
 
+var ck = new CircleK();
+document.querySelector("#start").onclick = () => {
+    ck.init();
+    var elem = document.documentElement;
+    openFullscreen();
+}
+
+function openFullscreen() {
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { 
+    document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { 
+    document.documentElement.msRequestFullscreen();
+    }
+}
