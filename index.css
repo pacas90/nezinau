@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#start {
+    width: 100px;
+    height: 50px;
+}
+#win {
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translateY(100%);
+}
+#img {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+#device-time {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-color: transparent;
+    top: 18px;
+    left: 25px;
+    color: #ffffff;
+    font-family:sans-serif;
+    font-weight: bold;
+}
+#timer {
+    background-color: transparent;
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    bottom: 65px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+}
+#pasiemimo-laikas {
+    position: absolute;
+    left: 5px;
+    top: 358px;
+    height: 15px;
+    width: 70px;
+    color: #a1672b;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+#pasiemimo-data {
+    position: absolute;
+    left: 5px;
+    top: 373px;
+    height: 15px;
+    width: 80px;
+    color: #a1672b;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
