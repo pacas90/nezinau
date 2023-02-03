@@ -47,7 +47,7 @@ body {
 #pasiemimo-laikas {
     position: absolute;
     left: 5px;
-    top: 358px;
+    top: 368px;
     height: 15px;
     width: 70px;
     color: #a1672b;
@@ -58,7 +58,7 @@ body {
 #pasiemimo-data {
     position: absolute;
     left: 5px;
-    top: 373px;
+    top: 383px;
     height: 15px;
     width: 80px;
     color: #a1672b;
